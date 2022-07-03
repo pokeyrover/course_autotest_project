@@ -3,19 +3,19 @@ from .locators import LoginPageLocators
 
 
 class LoginPage(BasePage):
-    def should_be_login_page(self):
+    def should_be_login_page(self):                                                     #login page verification
         self.should_be_login_url()
         self.should_be_login_form()
         self.should_be_register_form()
 
-    def should_be_login_url(self):
+    def should_be_login_url(self):                                                      #verification page url
         assert 'login' in self.browser.current_url, \
             'Current url isn`t login page url'
 
-    def should_be_login_form(self):
+    def should_be_login_form(self):                                                     #verification presence of the login form
         assert self.is_element_present(*LoginPageLocators.LOGIN_FORM), \
             'Login form is miss'
 
-    def should_be_register_form(self):
+    def should_be_register_form(self):                                                  #verification presence of the register form
         assert self.is_element_present(*LoginPageLocators.REGISTER_FORM), \
             'Register form is miss'
