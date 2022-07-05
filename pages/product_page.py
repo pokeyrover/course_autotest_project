@@ -1,4 +1,5 @@
 from .base_page import BasePage
+from .login_page import LoginPage
 from .locators import ProductPageLocators
 from selenium.webdriver.common.by import By
 
@@ -26,4 +27,12 @@ class ProductPage(BasePage):
         product_name_on_alert = self.get_element_text(*ProductPageLocators.ALERT_PRODUCT_NAME)
         assert product_name_on_page == product_name_on_alert, \
             "Product name in page and product name in alert are different"
+        
+    def should_not_be_succes_message(self):                             #return true if element not present else false
+        assert self.is_not_element_present(*ProductPageLocators.ALERT_PRODUCT_NAME), \
+            "Success message is presented, but should not be"
+            
+    def should_disappear(self):                                         #return true if element disapeared after 4 second else true
+        assert not self.is_disappeared(*ProductPageLocators.ALERT_PRODUCT_NAME), \
+            "Message didn`t dissapiar, but should"
         
