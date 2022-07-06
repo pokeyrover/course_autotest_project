@@ -51,6 +51,12 @@ class BasePage():
         assert 'login' in self.browser.current_url, \
             'Current url isn`t login page url'
         
+    def go_to_basket_page(self):                                                                #open basket page and check current url
+        basket_button = self.browser.find_element(*BasePageLocators.BASKET_LINK)
+        basket_button.click()
+        assert '/basket' in self.browser.current_url, \
+            'Current url isn`t basket page url'
+        
     def should_be_login_link(self):                                                             #checking present link to sign up page
         assert self.is_element_present(*BasePageLocators.LOGIN_LINK),\
             'Login link is not presented'
