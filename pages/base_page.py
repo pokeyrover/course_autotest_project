@@ -13,6 +13,10 @@ class BasePage():
         self.url = url
         self.browser.implicitly_wait(timeout)
         
+    def enter_in_field(self, how, what, data):                                                  #inputting data in chosen field for enter element
+        field = self.browser.find_element(how, what)
+        field.send_keys(data)
+        
     def open(self):                                                                             #open page function
         self.browser.get(self.url)
         
@@ -56,6 +60,14 @@ class BasePage():
         basket_button.click()
         assert '/basket' in self.browser.current_url, \
             'Current url isn`t basket page url'
+            
+    def press_button(self, how, what):                                                          #pressing button
+        button = self.browser.find_element(how, what)
+        button.click()
+        
+    def should_be_authorized_user(self):                                                        #check authorized user
+        assert self.is_element_present(*BasePageLocators.USER_ICON),\
+            'User icon is not presented, probably unauthorised user'
         
     def should_be_login_link(self):                                                             #checking present link to sign up page
         assert self.is_element_present(*BasePageLocators.LOGIN_LINK),\
