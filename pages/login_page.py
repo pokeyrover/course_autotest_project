@@ -19,3 +19,11 @@ class LoginPage(BasePage):
     def should_be_register_form(self):                                                  #verification presence of the register form
         assert self.is_element_present(*LoginPageLocators.REGISTER_FORM), \
             'Register form is miss'
+            
+    def registration_new_user(self, email, password):                                   #registration new user and checking success message
+        self.enter_in_field(*LoginPageLocators.REGISTRATION_EMAIL, email)
+        self.enter_in_field(*LoginPageLocators.REGISTRATION_PASS, password)
+        self.enter_in_field(*LoginPageLocators.REGISTRATION_PASS_CONFIRM, password)
+        self.press_button(*LoginPageLocators.REGISTRATION_BUTTON)
+        assert self.is_element_present(*LoginPageLocators.SUCCESS_REG_MESSAGE),\
+            'Success registration message not found'
