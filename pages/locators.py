@@ -1,10 +1,10 @@
-from distutils.util import byte_compile
 from selenium.webdriver.common.by import By
 
 
 class BasePageLocators:
     LOGIN_LINK = (By.CSS_SELECTOR, '#login_link')
     LOGIN_LINK_INVALID = (By.CSS_SELECTOR, '#logn_link_inc')
+    BASKET_LINK = (By.CSS_SELECTOR, '.btn-group :nth-child(1).btn')
 
 class MainPageLocators:                                                                 #selector and url variables for main page
     PAGE_URL = 'http://selenium1py.pythonanywhere.com/'
@@ -22,4 +22,9 @@ class ProductPageLocators:                                                      
     PRODUCT_PRICE_ON_PAGE = (By.CSS_SELECTOR, 'p.price_color')
     ALERT_PRODUCT_NAME = (By.CSS_SELECTOR, '.alert-success:nth-child(1) .alertinner strong')
     PRODUCT_NAME_ON_PAGE = (By.CSS_SELECTOR, '.product_main h1')
+    
+class BasketPageLocators:
+    BASKET_ITEMS = (By.CSS_SELECTOR, '.basket-items')
+    ADD_VOUCHER_BUTTON = (By.CSS_SELECTOR, '#content_inner p a.btn')
+    MESSAGE_ABOUT_EMPTY_BASKET = (By.CSS_SELECTOR, '#content_inner p a')
     
