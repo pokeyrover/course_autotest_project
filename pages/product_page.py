@@ -1,10 +1,11 @@
 from .base_page import BasePage
 from .basket_page import BasketPage
+from .login_page import LoginPage
 from .locators import ProductPageLocators
 from selenium.webdriver.common.by import By
 
 
-class ProductPage(BasketPage, BasePage):
+class ProductPage(BasketPage, LoginPage, BasePage):
     def add_product_to_basket(self):                                    #add function to basket
         add_buttom = self.browser.find_element(*ProductPageLocators.ADD_TO_BASKET_BUTTON)
         add_buttom.click()
